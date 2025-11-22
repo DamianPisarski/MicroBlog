@@ -1,9 +1,9 @@
 # MicroBlog
 
 ## Autor
-Damian Pisarski
-Adam Myślicki
-Aleksandra Matysik
+Damian Pisarski  
+Adam Myślicki  
+Aleksandra Matysik  
 (Wrocław 2025)  
 Akademia Techniczno-Informatyczna w Naukach Stosowanych  
 
