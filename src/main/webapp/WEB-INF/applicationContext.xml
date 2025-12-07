@@ -19,4 +19,36 @@
         <property name="username" value="SA"/>
         <property name="password" value=""/>
     </bean> 
+
+    <!-- EntityManagerFactory -->
+    <bean   id="entityManagerFactoryBean" 
+            class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
+        <property name="dataSource" ref="dataSource"/> 
+        <property name="packagesToScan" value="edu.atins"/> 
+        <property name="jpaVendorAdapter"> 
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> 
+                <property name="showSql" value="false"/> 
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/> 
+            </bean> 
+        </property> 
+        <property name="jpaProperties"> 
+            <props> 
+                <prop key="hibernate.hbm2ddl.auto">update</prop> 
+            </props> 
+        </property> 
+    </bean> 
+
+    <!-- Wsparcie dla adnotacji @PersistenceContext -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> 
+    
+    <!-- Translacja wyjatkow JPA na Spring DataAccessException -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/> 
+    
+    <!-- Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> 
+        <property name="entityManagerFactory" ref="entityManagerFactoryBean"/> 
+    </bean> 
+
+    <!-- Wsparcie dla adnotacji @Transactional -->
+    <tx:annotation-driven/> 
 </beans> 
