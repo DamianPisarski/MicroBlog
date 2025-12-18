@@ -28,7 +28,7 @@
         <property name="jpaVendorAdapter"> 
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> 
                 <property name="showSql" value="false"/> 
-                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/> 
+                <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect"/> 
             </bean> 
         </property> 
         <property name="jpaProperties"> 
@@ -51,4 +51,31 @@
 
     <!-- Wsparcie dla adnotacji @Transactional -->
     <tx:annotation-driven/> 
+
+    
+    <!-- Update pliku z lab 4 -->
+    <bean id="entityManagerFactoryBean"
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="edu.atins.model" />
+
+        <property name="jpaVendorAdapter">      
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="false" />
+                <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+            </bean>
+        </property>
+
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
+        <property name="entityManagerFactory" ref="entityManagerFactoryBean" />
+    </bean>     
 </beans> 
