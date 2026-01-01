@@ -155,6 +155,16 @@
             <version>1.2.17</version>
             <scope>runtime</scope>
         </dependency>
+<!-- Spring Test (dla testów z JUnit 5 lub 4) -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>4.3.8.RELEASE</version>
+    <scope>test</scope>
+</dependency>
+
+
+        
     </dependencies>
 
     <build>
