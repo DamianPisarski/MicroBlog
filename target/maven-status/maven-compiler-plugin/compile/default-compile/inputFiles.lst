@@ -1,4 +1,10 @@
-C:\Users\slupe\Desktop\wszystk\studia\holub\MicroBlog\src\main\java\edu\atins\App.java
-C:\Users\slupe\Desktop\wszystk\studia\holub\MicroBlog\src\main\java\edu\atins\model\Follower.java
-C:\Users\slupe\Desktop\wszystk\studia\holub\MicroBlog\src\main\java\edu\atins\model\Post.java
-C:\Users\slupe\Desktop\wszystk\studia\holub\MicroBlog\src\main\java\edu\atins\model\User.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\App.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\FollowerDao.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\impl\FollowerDaoImpl.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\impl\UzytkownikDaoImpl.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\impl\WiadomoscDaoImpl.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\UzytkownikDao.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\dao\WiadomoscDao.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\model\Follower.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\model\Post.java
+C:\projekty\MicroBlog\src\main\java\edu\atins\model\User.java
