@@ -31,32 +31,124 @@ public class FollowerDaoImplTest {
             return follows.contains(follower.getUsername() + "->" + followed.getUsername());
         }
     };
+    
+    private User user(String name) {
+        User u = new User();
+        u.setUsername(name);
+        return u;
+    }
 
-    @Test
+     @Test
     void testFollowAndIsFollowing() {
-        User user1 = new User();
-        user1.setUsername("user1");
+        User u1 = user("user1");
+        User u2 = user("user2");
 
-        User user2 = new User();
-        user2.setUsername("user2");
+        followerDao.follow(u1, u2);
 
-        followerDao.follow(user1, user2);
-
-        assertTrue(followerDao.isFollowing(user1, user2));
+        assertTrue(followerDao.isFollowing(u1, u2));
     }
 
     @Test
+    void testFollowTwiceStillFollowing() {
+        User u1 = user("user1");
+        User u2 = user("user2");
+
+        followerDao.follow(u1, u2);
+        followerDao.follow(u1, u2); // duplikat też ma działać
+
+        assertTrue(followerDao.isFollowing(u1, u2));
+    }
+
+    @Test
+    void testSelfFollow() {
+        User u1 = user("user1");
+
+        followerDao.follow(u1, u1);
+
+        assertTrue(followerDao.isFollowing(u1, u1));
+    }
+
+    @Test
+    void testFollowNullFollowerThrows() {
+        User u2 = user("user2");
+
+        assertThrows(NullPointerException.class, () -> followerDao.follow(null, u2));
+    }
+
+    @Test
+    void testFollowNullFollowedThrows() {
+        User u1 = user("user1");
+
+        assertThrows(NullPointerException.class, () -> followerDao.follow(u1, null));
+    }
+
+    // ===== TESTY UNFOLLOW =====
+
+    @Test
     void testUnfollow() {
-        User user1 = new User();
-        user1.setUsername("user1");
+        User u1 = user("user1");
+        User u2 = user("user2");
 
-        User user2 = new User();
-        user2.setUsername("user2");
+        followerDao.follow(u1, u2);
+        assertTrue(followerDao.isFollowing(u1, u2));
 
-        followerDao.follow(user1, user2);
-        assertTrue(followerDao.isFollowing(user1, user2));
+        followerDao.unfollow(u1, u2);
+        assertFalse(followerDao.isFollowing(u1, u2));
+    }
 
-        followerDao.unfollow(user1, user2);
-        assertFalse(followerDao.isFollowing(user1, user2));
+    @Test
+    void testUnfollowWhenNotFollowingDoesNotThrow() {
+        User u1 = user("user1");
+        User u2 = user("user2");
+
+        assertDoesNotThrow(() -> followerDao.unfollow(u1, u2));
+        assertFalse(followerDao.isFollowing(u1, u2));
+    }
+
+    @Test
+    void testUnfollowNullFollowerThrows() {
+        User u2 = user("user2");
+
+        assertThrows(NullPointerException.class, () -> followerDao.unfollow(null, u2));
+    }
+
+    @Test
+    void testUnfollowNullFollowedThrows() {
+        User u1 = user("user1");
+
+        assertThrows(NullPointerException.class, () -> followerDao.unfollow(u1, null));
+    }
+
+    // ===== TESTY ISFOLLOWING =====
+
+    @Test
+    void testIsFollowingNeverFollowedReturnsFalse() {
+        User u1 = user("user1");
+        User u2 = user("user2");
+
+        assertFalse(followerDao.isFollowing(u1, u2));
+    }
+
+    @Test
+    void testIsFollowingDirectionMatters() {
+        User u1 = user("user1");
+        User u2 = user("user2");
+
+        followerDao.follow(u1, u2);
+
+        assertTrue(followerDao.isFollowing(u1, u2));
+        assertFalse(followerDao.isFollowing(u2, u1));
+    }
+
+    @Test
+    void testIsFollowingNullFollowerThrows() {
+        User u2 = user("user2");
+        assertThrows(NullPointerException.class, () -> followerDao.isFollowing(null, u2));
+    }
+
+    @Test
+    void testIsFollowingNullFollowedThrows() {
+        User u1 = user("user1");
+        assertThrows(NullPointerException.class, () -> followerDao.isFollowing(u1, null));
     }
 }
