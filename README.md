@@ -5,6 +5,7 @@ Damian Pisarski
 Adam Myślicki  
 Aleksandra Matysik
 Piotr Słupski
+Piotr Wolański
 (Wrocław 2025)  
 Akademia Techniczno-Informatyczna w Naukach Stosowanych
 
