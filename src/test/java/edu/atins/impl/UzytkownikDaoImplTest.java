@@ -11,11 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UzytkownikDaoImplTest {
 
-    // Prosta w-pamięci "baza"// Mockowa implementacja na potrzeby kompilacji 
-    // private UzytkownikDao uzytkownikDao = new UzytkownikDao() { 
-    //  @Override 
-    // public void addUser(User user) { 
-    // // mock } 
     private final UzytkownikDao uzytkownikDao = new UzytkownikDao() {
 
         private final Map<String, User> users = new HashMap<>();

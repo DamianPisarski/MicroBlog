@@ -13,10 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class WiadomoscDaoImplTest {
 
-    // In-memory "baza" postów
     private final List<Post> posts = new ArrayList<>();
 
-    // In-memory relacje follow: followerUsername -> set(followedUsername)
     private final Map<String, Set<String>> follows = new HashMap<>();
 
     private WiadomoscDao wiadomoscDao;
@@ -62,7 +60,6 @@ public class WiadomoscDaoImplTest {
 
             @Override
             public void addPost(Post post) {
-                // minimalna walidacja
                 if (post == null) throw new IllegalArgumentException("post is null");
                 if (post.getAuthor() == null || post.getAuthor().getUsername() == null)
                     throw new IllegalArgumentException("author is required");

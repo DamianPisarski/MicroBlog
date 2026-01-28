@@ -13,7 +13,6 @@ public class FollowerDaoImplTest {
 
     private FollowerDao followerDao = new FollowerDao() {
 
-        // najprostsza możliwa "baza"
         private final Set<String> follows = new HashSet<>();
 
         @Override

@@ -1,13 +1,21 @@
 # MicroBlog
 
-## Autorq
+## Autorzy:
 Damian Pisarski  
 Adam Myślicki  
 Aleksandra Matysik
 Piotr Słupski
 Piotr Wolański
-(Wrocław 2025)  
+
+(Wrocław 2026)  
 Akademia Techniczno-Informatyczna w Naukach Stosowanych
+
+## Ważne komendy
+- `mvn clean` – czyści efekty pracy kompilatora, usuwa katalog target
+- `mvn compile` – kompiluje projekt do postaci binarnej
+- `mvn package` – buduje paczkę np. jar z binarek powstałych w wyniku kompilacji
+- `mvn install` – umieszcza binarną paczkę w lokalnym repozytorium artefaktów
+- `java -classpath lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/hemrajdb --dbname.0 microBlog` - włączenie bazy danych
 
 ## Opis projektu
 Prosty projekt webowy MicroBlog stworzony w Javie z użyciem frameworku Spark.  
@@ -26,7 +34,7 @@ Aplikacja umożliwia:
 - `sketches/` – szkice interfejsu użytkownika.
 
 ## Wymagania
-- Java JDK 17 lub nowsza,
+- Java JDK 8 (sugerowana: 8.0.322-tem)
 - Maven 3.x,
 - opcjonalnie VS Code z zainstalowanym Java Extension Pack do uruchamiania w IDE.
 
@@ -37,12 +45,49 @@ Aplikacja umożliwia:
    cd MicroBlog
    ```
 
-2. Zbuduj projekt i uruchom aplikację za pomocą Mavena:
+2. Ustawianie bazy:
+   Projekt używa: [HSQLDB](http://hsqldb.org/)
+   Po rozpakowaniu w głównym katalogu (hsqldb) utwórz plik **test.properties** w tym pliku umieść:
+   ```
+      server.database.0=file:hsqldb/hemrajdb
+      server.dbname.0=microBlog
+   ``` 
+   W głównym katalogu (hsqldb) wydaj komendę w linii poleceń:
+   ```
+   java -classpath lib/hsqldb.jar org.hsqldb.server.Server
+   ```
+   Po poprawnym uruchomieniu zatrzymaj serwer.
+   W głównym katalogu (hsqldb) wydaj komendę w linii poleceń (włączenia bazy danych):
+   ```
+   java -classpath lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/hemrajdb
+   --dbname.0 microBlog
+   ```
+   ---
+   Uruchomianie GUI:
+   ```
+   java -classpath ../lib/hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
+   ```
+
+   ---
+   Dane do bazy:
+   URL: jdbc:hsqldb:hsql://localhost/microBlog
+   User: SA (domyślne)
+   Password: (domyślnie puste)
+
+   ---
+
+   Dodanie bazy testowej
+   Przy użyciu GUI HSQLDB:
+   1. wykonać **create-db.sql** (src/main/sql/create-db.sql) - Tworzenie tabel
+   2. wykonać **insert-data.sql** (src/main/sql/insert-data.sql) - Dodanie danych do tabeli
+   
+
+3. Zbuduj projekt i uruchom aplikację za pomocą Mavena:
    ```bash
    mvn clean compile exec:java
    ```
 
-3. Otwórz przeglądarkę i wejdź na:
+4. Otwórz przeglądarkę i wejdź na:
    ```
    http://localhost:4567/hello
    ```
