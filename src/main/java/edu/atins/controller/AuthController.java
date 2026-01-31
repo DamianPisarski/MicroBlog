@@ -9,7 +9,6 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.NoResultException;
 
-
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -71,7 +70,7 @@ public class AuthController {
             }
 
             req.session(true).attribute("username", user.getUsername());
-            res.redirect("/hello");
+            res.redirect("/panel");
             return null;
         });
 
@@ -111,7 +110,7 @@ public class AuthController {
             }
 
             req.session(true).attribute("username", user.getUsername());
-            res.redirect("/hello");
+            res.redirect("/panel");
 
             return null;
         });

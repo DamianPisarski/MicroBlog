@@ -3,6 +3,7 @@ package edu.atins;
 import static spark.Spark.*;
 
 import edu.atins.controller.AuthController;
+import edu.atins.controller.PanelController;
 import edu.atins.service.MicroblogService;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Configuration;
@@ -32,6 +33,7 @@ public class App {
 
         // Routes
         new AuthController(microblogService, freeMarker).registerRoutes();
+        new PanelController(microblogService, freeMarker).registerRoutes();
 
         // Test route
         get("/hello", (req, res) -> "Hello MicroBlog!");
