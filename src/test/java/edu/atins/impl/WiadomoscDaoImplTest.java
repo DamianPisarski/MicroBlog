@@ -63,7 +63,7 @@ public class WiadomoscDaoImplTest {
                 if (post == null) throw new IllegalArgumentException("post is null");
                 if (post.getAuthor() == null || post.getAuthor().getUsername() == null)
                     throw new IllegalArgumentException("author is required");
-                if (post.getContent() == null || post.getContent().isBlank())
+                if (post.getContent() == null || post.getContent().trim().isEmpty())
                     throw new IllegalArgumentException("content is required");
 
                 posts.add(post);

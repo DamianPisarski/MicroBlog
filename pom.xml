@@ -241,9 +241,6 @@
         <plugin>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${surefire.plugin.version}</version>
-            <configuration>
-                <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
-            </configuration>
         </plugin>
     </plugins>
 </build>
