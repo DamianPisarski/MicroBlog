@@ -8,6 +8,7 @@ public interface MicroblogService {
     // Rejestracja i pobieranie danych uzytkownika
     void registerUser(User user);
     User getUserByUsername(String username);
+    User getUserById(Long id);
 
     // Relacje miedzy uzytkownikami
     void followUser(User follower, User followed);

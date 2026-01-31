@@ -23,6 +23,14 @@ public class UzytkownikDaoImpl implements UzytkownikDao {
     }
 
     @Override
+    public User getUserById(Long id) {
+        return entityManager.createQuery(
+                "SELECT u FROM User u WHERE u.id = :id", User.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
+    @Override
     public void addUser(User user) {
         entityManager.persist(user);
     }

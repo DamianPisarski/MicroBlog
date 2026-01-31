@@ -35,6 +35,11 @@ public class MicroblogServiceImpl implements MicroblogService {
     public User getUserByUsername(String username) {
         return uzytkownikDao.getUserByUsername(username);
     }
+    
+    @Override
+    public User getUserById(Long id) {
+        return uzytkownikDao.getUserById(id);
+    }
 
     @Override
     @Transactional
