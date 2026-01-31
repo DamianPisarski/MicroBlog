@@ -38,6 +38,11 @@ public class WiadomoscDaoImplTest {
             }
 
             @Override
+            public List<Post> getPostsByUserId(Long id) {
+                return Collections.emptyList();
+            }
+
+            @Override
             public List<Post> getFullTimeline(User user) {
                 if (user == null || user.getUsername() == null) return Collections.emptyList();
 

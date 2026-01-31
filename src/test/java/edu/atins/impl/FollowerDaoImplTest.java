@@ -1,10 +1,13 @@
 package edu.atins.impl;
 
 import edu.atins.dao.FollowerDao;
+import edu.atins.model.Follower;
 import edu.atins.model.User;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,6 +31,16 @@ public class FollowerDaoImplTest {
         @Override
         public boolean isFollowing(User follower, User followed) {
             return follows.contains(follower.getUsername() + "->" + followed.getUsername());
+        }
+
+        @Override
+        public List<Follower> getFollowers(Long userId) {
+            return Collections.emptyList();
+        }
+
+        @Override
+        public List<Follower> getFollowed(Long userId) {
+            return Collections.emptyList();
         }
     };
     
