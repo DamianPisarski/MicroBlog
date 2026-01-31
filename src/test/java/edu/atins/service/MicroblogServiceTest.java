@@ -6,11 +6,13 @@ import edu.atins.service.impl.MicroblogServiceImpl;
 import edu.atins.dao.FollowerDao;
 import edu.atins.dao.UzytkownikDao;
 import edu.atins.dao.WiadomoscDao;
+import edu.atins.model.Follower;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,6 +39,16 @@ public class MicroblogServiceTest {
             public void unfollow(User f, User d) { follows.remove(f.getUsername() + "->" + d.getUsername()); }
             @Override
             public boolean isFollowing(User f, User d) { return follows.contains(f.getUsername() + "->" + d.getUsername()); }
+
+            @Override
+            public List<Follower> getFollowers(Long userId) {
+                return Collections.emptyList();
+            }
+
+            @Override
+            public List<Follower> getFollowed(Long userId) {
+                return Collections.emptyList();
+            }
         };
 
         WiadomoscDao wiadomoscDao = new WiadomoscDao() {
@@ -49,6 +61,7 @@ public class MicroblogServiceTest {
                     .collect(Collectors.toList());
             }
             @Override public List<Post> getPostsByUser(User u) { return new ArrayList<>(); }
+            @Override public List<Post> getPostsByUserId(Long id) { return new ArrayList<>(); }
             @Override public List<Post> getAllPosts() { return postsDb; }
         };
 

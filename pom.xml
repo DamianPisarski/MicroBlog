@@ -15,7 +15,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>8</maven.compiler.release>
         <junit.bom.version>5.11.0</junit.bom.version>
         <spark.core.version>2.7.2</spark.core.version>
         <spark.freemarker.version>2.7.1</spark.freemarker.version>

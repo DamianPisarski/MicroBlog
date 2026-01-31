@@ -27,6 +27,11 @@ public class UzytkownikDaoImplTest {
             if (username == null) throw new NullPointerException("username null");
             return users.get(username);
         }
+
+        @Override
+        public User getUserById(Long id) {
+            return null;
+        }
     };
 
     private User create(String username) {
