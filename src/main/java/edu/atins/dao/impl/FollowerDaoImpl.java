@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;;
+
 @Repository
 @Transactional
 public class FollowerDaoImpl implements FollowerDao {
@@ -41,5 +43,21 @@ public class FollowerDaoImpl implements FollowerDao {
                 .setParameter("followed", followed)
                 .getSingleResult();
         return count > 0;
+    }
+
+    @Override
+    public List<Follower> getFollowers(Long Id) {
+        return entityManager.createQuery(
+            "SELECT f FROM Follower f WHERE f.followed.id = :id", Follower.class)
+            .setParameter("id", Id)
+            .getResultList();
+    }
+
+    @Override
+    public List<Follower> getFollowed(Long Id) {
+        return entityManager.createQuery(
+            "SELECT f FROM Follower f WHERE f.follower.id = :id", Follower.class)
+            .setParameter("id", Id)
+            .getResultList();
     }
 }

@@ -3,20 +3,25 @@ package edu.atins.service;
 import java.util.List;
 import edu.atins.model.User;
 import edu.atins.model.Post;
+import edu.atins.model.Follower;
 
 public interface MicroblogService {
     // Rejestracja i pobieranie danych uzytkownika
     void registerUser(User user);
     User getUserByUsername(String username);
+    User getUserById(Long id);
 
     // Relacje miedzy uzytkownikami
     void followUser(User follower, User followed);
     void unfollowUser(User follower, User followed);
     boolean isFollowing(User follower, User followed);
+    List<Follower> getFollowersByUserId(Long id);
+    List<Follower> getFollowedByUserId(Long id);
 
     // Logika wpisow
     void createPost(Post post);
     List<Post> getUserTimeline(User user);
     List<Post> getAllPosts();
     List<Post> getPostsByAuthor(User author);
+    List<Post> getPostsByUserId(Long id);
 }

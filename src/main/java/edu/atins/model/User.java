@@ -3,6 +3,8 @@ package edu.atins.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -100,5 +102,17 @@ public class User {
     }
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public Map<String, Object> getUserBasicData() {
+        Map<String, Object> data = new HashMap<>();
+
+        data.put("id", this.id);
+        data.put("username", this.username);
+        data.put("displayName", this.displayName);
+        data.put("email", this.email);
+        data.put("createdAt", this.createdAt);
+        
+        return data;
     }
 }
