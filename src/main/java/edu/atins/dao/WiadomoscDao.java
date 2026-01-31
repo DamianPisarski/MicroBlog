@@ -8,6 +8,9 @@ public interface WiadomoscDao {
     // Pobranie wszystkich wiadomości konkretnego użytkownika
     List<Post> getPostsByUser(User user);
 
+    // Pobranie wszystkich wiadomości konkretnego użytkownika po jego ID
+    List<Post> getPostsByUserId(Long id);
+
     // Pobranie wszystkich wiadomości mojego i obserwowanych użytkowników
     List<Post> getFullTimeline(User user);
 

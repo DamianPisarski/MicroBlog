@@ -23,6 +23,14 @@ public class WiadomoscDaoImpl implements WiadomoscDao {
                 .setParameter("user", user)
                 .getResultList();
     }
+    
+    @Override
+    public List<Post> getPostsByUserId(Long id) {
+        return entityManager.createQuery(
+                "SELECT p FROM Post p WHERE p.author.id = :id ORDER BY p.createdAt DESC", Post.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
 
     @Override
     public List<Post> getFullTimeline(User user) {

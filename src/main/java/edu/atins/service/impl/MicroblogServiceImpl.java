@@ -11,6 +11,7 @@ import edu.atins.dao.UzytkownikDao;
 import edu.atins.dao.WiadomoscDao;
 import edu.atins.model.Post;
 import edu.atins.model.User;
+import edu.atins.model.Follower;
 import edu.atins.service.MicroblogService;
 
 @Service
@@ -63,6 +64,16 @@ public class MicroblogServiceImpl implements MicroblogService {
     }
 
     @Override
+    public List<Follower> getFollowersByUserId(Long id) {
+        return followerDao.getFollowers(id);
+    }
+
+    @Override
+    public List<Follower> getFollowedByUserId(Long id) {
+        return followerDao.getFollowed(id);
+    }
+
+    @Override
     @Transactional
     public void createPost(Post post) {
         if (post.getAuthor() == null) {
@@ -87,5 +98,10 @@ public class MicroblogServiceImpl implements MicroblogService {
     @Override
     public List<Post> getPostsByAuthor(User author) {
         return wiadomoscDao.getPostsByUser(author);
+    }
+
+    @Override
+    public List<Post> getPostsByUserId(Long id) {
+        return wiadomoscDao.getPostsByUserId(id);
     }
 }

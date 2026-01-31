@@ -76,5 +76,4 @@ public class Follower {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
 }
