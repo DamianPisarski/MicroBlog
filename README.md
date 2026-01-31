@@ -20,6 +20,13 @@ Akademia Techniczno-Informatyczna w Naukach Stosowanych
 - `mvn test` - testowanie. Wiecej w rozdziale testowanie
 - `java -classpath lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/hemrajdb --dbname.0 microBlog` - włączenie bazy danych (w katalogu aplikacji hsqldb)
 
+## Konta testowe
+
+- Hasła do kont testowych (plaintext):
+- jan / jan123
+- anna / anna123
+- marek / marek123
+
 ## Opis projektu
 
 Prosty projekt webowy MicroBlog stworzony w Javie z użyciem frameworku Spark.  
