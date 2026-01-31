@@ -1,6 +1,5 @@
 package edu.atins.dao;
 
-import edu.atins.model.Follower;
 import edu.atins.model.User;
 
 public interface FollowerDao {

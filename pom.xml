@@ -16,6 +16,27 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
+        <junit.bom.version>5.11.0</junit.bom.version>
+        <spark.core.version>2.7.2</spark.core.version>
+        <spark.freemarker.version>2.7.1</spark.freemarker.version>
+        <freemarker.version>2.3.28</freemarker.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <jpa.version>2.2.1</jpa.version>
+        <hsqldb.version>2.4.1</hsqldb.version>
+        <commons.dbcp2.version>2.1.1</commons.dbcp2.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+        <spring-test.version>4.3.8.RELEASE</spring-test.version>
+        <junit4.version>4.13.2</junit4.version>
+        <jaxb.version>2.3.1</jaxb.version>
+        <exec.plugin.version>3.1.0</exec.plugin.version>
+        <compiler.plugin.version>3.13.0</compiler.plugin.version>
+        <clean.plugin.version>3.4.0</clean.plugin.version>
+        <jar.plugin.version>3.4.2</jar.plugin.version>
+        <surefire.plugin.version>3.3.0</surefire.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -23,7 +44,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.11.0</version>
+                <version>${junit.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -47,63 +68,63 @@
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
-            <version>2.7.2</version>
+            <version>${spark.core.version}</version>
         </dependency>
 
         <!-- Spark Freemarker -->
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-template-freemarker</artifactId>
-            <version>2.7.1</version>
+            <version>${spark.freemarker.version}</version>
         </dependency>
 
         <!-- Freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.28</version>
+            <version>${freemarker.version}</version>
         </dependency>
 
         <!-- Spring Context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Spring Web MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Spring ORM -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Hibernate Core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.10.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!-- Hibernate EntityManager -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.10.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!-- JPA API -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.2.1</version>
+            <version>${jpa.version}</version>
         </dependency>
 
 
@@ -111,40 +132,40 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.4.1</version>
+            <version>${hsqldb.version}</version>
         </dependency>
 
         <!-- Apache Commons DBCP -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.1.1</version>
+            <version>${commons.dbcp2.version}</version>
         </dependency>
 
         <!-- jBCrypt -->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
-            <version>0.4</version>
+            <version>${jbcrypt.version}</version>
         </dependency>
 
         <!-- Commons BeanUtils -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
+            <version>${commons.beanutils.version}</version>
         </dependency>
 
         <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -152,78 +173,76 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
             <scope>runtime</scope>
         </dependency>
-<!-- Spring Test (dla testów z JUnit 5 lub 4) -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>4.3.8.RELEASE</version>
-    <scope>test</scope>
-</dependency>
 
-<!-- JUnit 4 (wymagany przez SpringJUnit4ClassRunner z LAB6) -->
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.13.2</version>
-    <scope>test</scope>
-</dependency>
+        <!-- Spring Test (dla testów z JUnit 5 lub 4) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-<!-- JAXB (potrzebne przy Java 11+ dla Hibernate 5.2) -->
-<dependency>
-    <groupId>javax.xml.bind</groupId>
-    <artifactId>jaxb-api</artifactId>
-    <version>2.3.1</version>
-</dependency>
-<dependency>
-    <groupId>org.glassfish.jaxb</groupId>
-    <artifactId>jaxb-runtime</artifactId>
-    <version>2.3.1</version>
-</dependency>
-        
+        <!-- JUnit 4 (wymagany przez SpringJUnit4ClassRunner z LAB6) -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit4.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JAXB (potrzebne przy Java 11+ dla Hibernate 5.2) -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
     </dependencies>
+    
+<build>
+    <plugins>
+        <!-- Exec plugin do uruchamiania aplikacji -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>${exec.plugin.version}</version>
+            <configuration>
+                <mainClass>edu.atins.App</mainClass>
+            </configuration>
+        </plugin>
 
-    <build>
-        <plugins>
-            <!-- Exec plugin do uruchamiania aplikacji -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <mainClass>edu.atins.App</mainClass>
-                </configuration>
-            </plugin>
+        <!-- Maven Compiler -->
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${compiler.plugin.version}</version>
+        </plugin>
 
-            <!-- Maven Compiler -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-            </plugin>
+        <!-- Maven Clean -->
+        <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>${clean.plugin.version}</version>
+        </plugin>
 
-            <!-- Maven Clean -->
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.4.0</version>
-            </plugin>
+        <!-- Maven Jar -->
+        <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>${jar.plugin.version}</version>
+        </plugin>
 
-            <!-- Maven Jar -->
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
-            </plugin>
-
-            <!-- Maven Surefire -->
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <!-- Maven Surefire -->
+        <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefire.plugin.version}</version>
+        </plugin>
+    </plugins>
+</build>
 
 </project>
